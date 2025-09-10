@@ -53,9 +53,20 @@ export const initializeLogger = (config: LoggerConfig): void => {
   globalLogger = new Logger(config)
 }
 
-export const Log = async (stack: string, level: string, packageName: string, message: string): Promise<LogResponse> => {
-  if (!globalLogger) {
-    throw new Error("Logger not initialized. Call initializeLogger() first.")
+export const Log = async (
+  stack: string,
+  level: string,
+  packageName: string,
+  message: string,
+): Promise<LogResponse | null> => {
+  try {
+    if (!globalLogger) {
+      console.warn("[Logger] Logger not initialized. Skipping log entry.")
+      return null
+    }
+    return await globalLogger.log(stack, level, packageName, message)
+  } catch (error) {
+    console.warn("[Logger] Failed to send log:", error instanceof Error ? error.message : "Unknown error")
+    return null
   }
-  return globalLogger.log(stack, level, packageName, message)
 }

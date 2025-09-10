@@ -9,6 +9,7 @@ import CssBaseline from "@mui/material/CssBaseline"
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter"
 import theme from "./theme"
 import "./globals.css"
+import LoggerProvider from "./components/LoggerProvider"
 
 export const metadata: Metadata = {
   title: "URL Shortener - Affordmed Evaluation",
@@ -29,7 +30,7 @@ export default function RootLayout({
           <AppRouterCacheProvider>
             <ThemeProvider theme={theme}>
               <CssBaseline />
-              {children}
+              <LoggerProvider>{children}</LoggerProvider>
             </ThemeProvider>
           </AppRouterCacheProvider>
         </Suspense>
