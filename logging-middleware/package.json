@@ -1,0 +1,20 @@
+{
+  "name": "@affordmed/logging-middleware",
+  "version": "1.0.0",
+  "description": "Logging middleware for Affordmed evaluation project",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "keywords": ["logging", "middleware", "typescript"],
+  "author": "Candidate",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  },
+  "files": ["dist/**/*", "README.md"]
+}
